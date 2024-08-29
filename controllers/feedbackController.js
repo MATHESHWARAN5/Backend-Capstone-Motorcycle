@@ -1,31 +1,23 @@
-// const Feedback = require('../server/models/Feedback');
-
 const Feedback = require('../models/Feedback');
 
-const submitFeedback = async (req, res) => {
-    try {
-        // Extract feedback data from the request body
-        const { userId, message, rating } = req.body;
+// Handle feedback submission
+exports.submitFeedback = async (req, res) => {
+  try {
+    const { rating, comment } = req.body;
 
-        // Create a new feedback object
-        const feedback = new Feedback({
-            userId,
-            message,
-            rating
-        });
-
-        // Save the feedback to the database
-        await feedback.save();
-
-        // Send a success response
-        res.status(201).json({ message: 'Feedback submitted successfully' });
-    } catch (err) {
-        // Handle errors
-        console.error(err);
-        res.status(500).json({ message: 'Internal server error' });
+    if (typeof rating !== 'number' || rating < 1 || rating > 5) {
+      return res.status(400).json({ message: 'Invalid rating value' });
     }
-};
+    if (typeof comment !== 'string' || comment.trim() === '') {
+      return res.status(400).json({ message: 'Comment cannot be empty' });
+    }
 
-module.exports = {
-    submitFeedback
+    const newFeedback = new Feedback({ rating, comment });
+    await newFeedback.save();
+
+    res.status(201).json({ message: 'Feedback submitted successfully' });
+  } catch (error) {
+    console.error('Error submitting feedback:', error.message);
+    res.status(500).json({ message: 'Internal Server Error', error: error.message });
+  }
 };
