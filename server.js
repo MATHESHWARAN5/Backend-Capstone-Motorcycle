@@ -22,10 +22,21 @@
 // app.use('/api', apiRoutes);
 // app.use('/api/feedback', feedbackRoutes);
 
-// const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 5001;
 // app.listen(PORT, () => {
 //     console.log(`Server is running on port ${PORT}`);
 // });
+
+
+
+
+
+
+
+
+
+
+
 
 
 // // app.use(cors(corsOptions));
@@ -39,6 +50,16 @@
 // };
 
 // app.use(cors(corsOptions));
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -95,42 +116,34 @@
 
 
 
+
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const {apiRoutes} = require('./routes/api.js')
 require('dotenv').config();
-    // const apiRoutes = './routes/api';
+
+const apiRoutes = require('./routes/api');
+const feedbackRoutes = require('./routes/feedback'); // Ensure this path is correct
 
 const app = express();
-const port = process.env.PORT || 5001;
 
 // Middleware setup
-app.use(cors());
 app.use(bodyParser.json());
-
-
-
-// Use routes
-// app.use('/api', apiRoutes);
-
-// Global error handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: 'Internal Server Error', error: err.message });
-});
+app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  dbName: 'motorcycle'
-})
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Error connecting to MongoDB:', err));
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, dbName: 'motorcycle', useUnifiedTopology: true })
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('Error connecting to MongoDB:', err));
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+// Routes
+app.use('/api', apiRoutes);
+app.use('/api/feedback', feedbackRoutes); // This should match the feedback route path
+
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
