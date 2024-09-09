@@ -1,4 +1,6 @@
 
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -22,6 +24,12 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, dbName: 'moto
 // Routes
 app.use('/api', apiRoutes);
 app.use('/api/feedback', feedbackRoutes); // This should match the feedback route path
+
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Internal Server Error' });
+});
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
