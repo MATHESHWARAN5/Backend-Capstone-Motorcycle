@@ -1,4 +1,3 @@
-// /server/models/ServiceBooking.js
 
 const mongoose = require('mongoose');
 

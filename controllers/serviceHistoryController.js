@@ -1,7 +1,3 @@
-// const ServiceBooking = require('../server/models/ServiceBooking');
-
-
-
 
 const ServiceBooking = require('../models/ServiceBooking')
 
