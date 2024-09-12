@@ -34,7 +34,13 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 const authMiddleware = async (req, res, next) => {
   // Extract token from 'Authorization' header
-  const token = req.header('Authorization')?.replace('Bearer ', '');
+  // Access Token from authorization
+const authHeader = req.headers['authorization'];
+
+// Ensure the token exists and is in the correct format
+if (authHeader && authHeader.startsWith('Bearer ')) {
+  const token = authHeader.split(' ')[1]; // Extract the token
+  console.log('Token:', token);
 
   if (!token) {
     return res.status(401).json({ message: 'No token provided' });
