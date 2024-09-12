@@ -2,8 +2,8 @@ const ServiceBooking = require('../models/ServiceBooking');
 
 // Function to handle booking a service
 const bookService = async (req, res) => {
- console.log('book service' ) 
- console.log(req.body)
+  console.log('book service');
+  console.log(req.body);
 
   try {
     // Extract data from request body
@@ -33,4 +33,3 @@ const bookService = async (req, res) => {
 module.exports = {
   bookService,
 };
-
