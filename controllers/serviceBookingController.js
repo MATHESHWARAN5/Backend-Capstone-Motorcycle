@@ -1,13 +1,12 @@
 
-
 const ServiceBooking = require('../models/ServiceBooking');
 
 const bookService = async (req, res) => {
     try {
-        const { userId, serviceType, dateTime, make, model, registrationNumber } = req.body;
-
+        const { userId, serviceType, dateTime, make, model } = req.body;
+        
         // Validate required fields
-        if (!userId || !serviceType || !dateTime || !make || !model || !registrationNumber) {
+        if (!userId || !serviceType || !dateTime || !make || !model) {
             return res.status(400).json({ message: 'All fields are required' });
         }
 
@@ -17,8 +16,7 @@ const bookService = async (req, res) => {
             serviceType,
             dateTime,
             make,
-            model,
-            registrationNumber
+            model
         });
 
         // Save to database

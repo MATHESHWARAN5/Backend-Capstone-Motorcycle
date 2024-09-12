@@ -1,5 +1,3 @@
-
-
 const mongoose = require('mongoose');
 
 const ServiceBookingSchema = new mongoose.Schema({
@@ -10,7 +8,8 @@ const ServiceBookingSchema = new mongoose.Schema({
     },
     serviceType: {
         type: String,
-        required: true
+        required: true,
+        enum: ['Oil Change', 'Tire Replacement', 'Brake Service'], // Optional: restrict to specific service types
     },
     dateTime: {
         type: Date,
@@ -23,11 +22,9 @@ const ServiceBookingSchema = new mongoose.Schema({
     model: {
         type: String,
         required: true
-    },
-    registrationNumber: {
-        type: String,
-        required: true
     }
+}, {
+    timestamps: true // Adds createdAt and updatedAt fields automatically
 });
 
 const ServiceBooking = mongoose.model('ServiceBooking', ServiceBookingSchema);
