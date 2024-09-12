@@ -53,11 +53,12 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 
+
 // Middleware setup
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || '*', // Allow requests from specified origins or all if not set
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowable HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'] // Allowable headers
+  origin: process.env.CORS_ORIGIN.split(','),
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(bodyParser.json());
 
