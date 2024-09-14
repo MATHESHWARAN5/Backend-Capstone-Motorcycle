@@ -29,42 +29,6 @@ The Motorcycle Service Booking Backend is a Node.js application using Express an
 - 🔐 **JWT**: JSON Web Tokens for authentication.
 - 🔄 **CORS**: Middleware for handling cross-origin requests.
 
-## Installation
-
-1. **Clone the Repository**:
-    ```bash
-    git clone https://github.com/your-username/motorcycle-service-booking-backend.git
-    ```
-
-2. **Navigate to the Project Directory**:
-    ```bash
-    cd motorcycle-service-booking-backend
-    ```
-
-3. **Install Dependencies**:
-    ```bash
-    npm install
-    ```
-
-## Configuration
-
-1. **Create a `.env` File**:
-    Copy the `.env.example` file to `.env` and configure your environment variables:
-    ```bash
-    cp .env.example .env
-    ```
-
-2. **Edit `.env`**:
-    - `MONGO_URI`: MongoDB connection URI.
-    - `JWT_SECRET`: Secret key for JWT encryption.
-    - `PORT`: Port number for the server.
-
-    Example `.env` file:
-    ```env
-    MONGO_URI=mongodb://localhost:27017/motorcycle_service_booking
-    JWT_SECRET=your_jwt_secret
-    PORT=5001
-    ```
 
 ## API Endpoints
 
@@ -81,36 +45,6 @@ The Motorcycle Service Booking Backend is a Node.js application using Express an
 ### Feedback
 - **POST /api/feedback**: Submit feedback for a service booking.
 - **GET /api/feedback/:id**: Get feedback by ID.
-
-## Running the Application
-
-1. **Start the Server**:
-    ```bash
-    npm start
-    ```
-
-2. **Development Mode**:
-    For development with auto-reloading:
-    ```bash
-    npm run dev
-    ```
-
-## Testing
-
-1. **Run Tests**:
-    ```bash
-    npm test
-    ```
-
-## Deployment
-
-1. **Build the Application** (for production):
-    ```bash
-    npm run build
-    ```
-
-2. **Deploy**:
-    Follow the deployment instructions specific to your hosting provider (e.g., Render, Heroku).
 
 
 ## License
