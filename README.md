@@ -112,25 +112,6 @@ The Motorcycle Service Booking Backend is a Node.js application using Express an
 2. **Deploy**:
     Follow the deployment instructions specific to your hosting provider (e.g., Render, Heroku).
 
-## Contributing
-
-1. **Fork the Repository**.
-2. **Create a Branch**:
-    ```bash
-    git checkout -b feature/your-feature
-    ```
-
-3. **Commit Your Changes**:
-    ```bash
-    git commit -m "Add your commit message"
-    ```
-
-4. **Push to Your Fork**:
-    ```bash
-    git push origin feature/your-feature
-    ```
-
-5. **Open a Pull Request**.
 
 ## License
 
